@@ -30,13 +30,14 @@ Java로 구현한 콘솔 기반 쇼핑 플랫폼입니다.
 ---
 
 ## 🗂️ 클래스 구성
-```
-Main / CommerceSystem / Category / Product
+
+main / CommerceSystem / Category / Product
 Cart / CartItem / CartHandler / AdminHandler / Customer
 
 ---
 
 ## 🗂️ 클래스 구성요소
+
 | 클래스 | 역할 |
 |--------|------|
 | Main | 프로그램 시작점 |
