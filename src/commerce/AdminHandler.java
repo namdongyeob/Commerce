@@ -7,7 +7,7 @@ public class AdminHandler {
     // 속성
     private List<Category> categories;
     private Scanner scanner;
-    private final String PASSWORD = "admin123";
+    private static final String PASSWORD = "admin123";
 
     //생성자
     public AdminHandler(List<Category> categories, Scanner scanner) {
@@ -15,6 +15,11 @@ public class AdminHandler {
         this.scanner = scanner;
     }
     // 관리자 인증 기능 CommerceSystem에서 6. 관리자 모드 선택시 호출됨
+
+    /**
+     * 관리자 인증을 진행한다.
+     * 비밀번호 3회 오류시 메인화면으로 돌아간다.
+     */
     public void enter(){
         for (int i = 0; i < 3; i++) {
             System.out.println("관리자 비밀번호를 입력하세요: ");
@@ -29,6 +34,11 @@ public class AdminHandler {
         System.out.println("비밀번호 3회 오류~! 메인으로 돌아갑니다.");
     }
     // 관리자 메뉴 보여주고 선택에 따라 기능 실행 메서드
+
+    /**
+     * 관리자 모드를 보여준다.
+     * 선택에 따라 기능 실행이 가능하다.
+     */
     public void showAdminMenu() {
         while (true) {
             System.out.println("[ 관리자 모드 ]");
@@ -48,6 +58,11 @@ public class AdminHandler {
             }
         }
          //상품 정보 입력받기
+
+    /**
+     * 새로운 상품을 카테고리에 추가한다.
+     * 카테고리 선택 후 상품명 | 가격 | 재고 를 입력받아 추가한다.
+     */
         public void addProduct() {
             for (int i = 0; i < categories.size(); i++) {
                 System.out.println((i + 1) + ". " + categories.get(i).getName());
@@ -72,8 +87,13 @@ public class AdminHandler {
             System.out.println("상품이 성공적으로 추가가 완료되었습니다.");
         }
         // 상품명으로 찾아서 가격,설명,재고 수정
-        public void updateProduct() {
-            System.out.println("수정할 상풍명을 입력하세요:");
+
+    /**
+     * 기존 상품 정보를 수정한다
+     * 상품명으로 검색 후 가격 | 설명 | 재고 중 선택하여 수정한다
+     */
+    public void updateProduct() {
+            System.out.println("수정할 상품명을 입력하세요:");
             String input = scanner.nextLine();
             Product target = null;
             for (Category category : categories){
@@ -100,7 +120,7 @@ public class AdminHandler {
                 scanner.nextLine();
             } else if (choice == 2) {
                 System.out.println("수정할 설명을 입력하세요: ");
-                target.setDescription(scanner.next()); // setter로 변경
+                target.setDescription(scanner.nextLine()); // setter로 변경
             } else if (choice == 3) {
                 System.out.println("수정할 재고수량을 입력하세요: ");
                 target.setStock(scanner.nextInt()); // setter로 변경
@@ -109,7 +129,12 @@ public class AdminHandler {
             System.out.println("수정이 완료되었습니다!");
         }
         // 상품명으로 찾아서 카테고리에서 제거
-        public void deleteProduct() {
+
+    /**
+     * 상품을 카테고리에서 삭제한다.
+     * 상품명으로 검색 후 해당상품을 제거한다.
+     */
+    public void deleteProduct() {
             System.out.println("삭제할 상품을 입력하세요: ");
             String input = scanner.nextLine();
             Product target = null;
@@ -131,7 +156,11 @@ public class AdminHandler {
                 System.out.println(target.getName() + "상품이 삭제되었습니다.");
         }
         // 모든 카테고리의 모든 상품 출력
-        public void printAllProduct(){
+
+    /**
+     * 모든 카테고리안에 있는 상품들을 출력한다.
+     */
+    public void printAllProduct(){
             System.out.println("[ 전체 상품 현황 ]");
             for (Category category: categories){
                 System.out.println("[ " + category.getName() + " ]");

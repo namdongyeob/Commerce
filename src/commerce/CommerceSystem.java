@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * 커머스 플랫폼의 메인 시스템 클래스
+ */
 public class CommerceSystem {
+    // 속성
     private List<Category> categories = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private Cart cart = new Cart();
@@ -13,7 +17,12 @@ public class CommerceSystem {
     private AdminHandler adminHandler = new AdminHandler(categories, scanner);
     private Customer customer= new Customer("남동엽","admin123@gmail.com","Platimun");
 
+    /**
+     * 카테고리의 상품 목록을 초기화한다.
+     * 전자제품, 의류, 식품 카테고리와 각 상품을 생성한다
+     */
     public CommerceSystem () {
+        // 생성자
         Category electronics = new Category("전자제품");
         electronics.addProduct(new Product("Galaxy S24", 1200000, "최신 스마트폰", 50));
         electronics.addProduct(new Product("ipone 16", 1350000, "apple의 최신 스마트폰",30));
@@ -35,6 +44,12 @@ public class CommerceSystem {
         food.addProduct(new Product("하겐다즈",8800,"프리미엄 아이스크림",50));
         categories.add(food);
     }
+
+    /**
+     * 커머스 플랫폼을 시작한다.
+     * 메인 메뉴를 출력하고 사용자 입력에 따라 각각의 기능들을 실행한다.
+     * 0. 을 입력시 프로그램을 종료한다.
+     */
     public void start() {
         while (true){
             System.out.println("[ 실시간 커머스 플랫폼 ]");
@@ -53,8 +68,7 @@ public class CommerceSystem {
             } else if (input == 4) {      // ← 추가
                 cartHandler.showCart();
             } else if (input == 5) {      // ← 추가
-                cart.clear();
-                System.out.println("주문이 취소되었습니다.");
+                cartHandler.resetCart();
             } else if (input == 6) {
                 adminHandler.enter();
             } else if (input < 1 || input > categories.size()) {

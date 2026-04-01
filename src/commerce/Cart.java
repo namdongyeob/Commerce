@@ -13,6 +13,12 @@ public class Cart {
         this.items = new ArrayList<>(); // 빈 리스트로 초기화
     }
     // 장바구니에 상품 추가
+    /**
+     * 장바구니에 상품을 추가한다
+     * 이미 담긴 상품이면 수량만 증가시기고, 없으면 새 항목을 추가한다
+     * @param product 담을 상품
+     * @param quantity 담을 수량
+     */
     public void addItem(Product product, int quantity) {
         for (CartItem item : items) { // items를 하나씩 꺼내서 확인 (이미 담긴 상품인지 체크)
             if (item.getProduct() == product) { // 같은 상품이 이미 있으면
@@ -23,11 +29,20 @@ public class Cart {
         items.add(new CartItem(product, quantity)); // 없는 상품이면 새 항목 추가
     }
 
+    /**
+     * 장바구니에 담긴 항목들을 반환한다.
+     * @return 장바구니 항복리스트
+     */
     public List<CartItem> getItems() {
         return items; // 장바구니 항목 목록 반환
     }
 
     // 장바구니 전체 금액 합계
+
+    /**
+     *  장바구니의 전체 금액 합게를 계산한다.
+     * @return 모든 항복의 (가격 x 수량) 합계
+     */
     public int getTotalPrice() {
         int total = 0;
         for (CartItem item : items) { // 모든 항목을 하나씩 꺼내서
@@ -37,11 +52,21 @@ public class Cart {
     }
 
     // 장바구니 비우기 - 주문 완료 후 초기화할 때 사용
+
+    /**
+     * 장바구니를 비운다.
+     * 주문완료 또는 주문 취소시 호출된다.
+     */
     public void clear() {
         items.clear();
     }
 
     // 장바구니 내용 출력 - 상품명 | 가격 | 수량 형식
+
+    /**
+     * 장바구니가 담긴 항목을 출력한다.
+     * 상품명 | 가격 | 수량 형식으로 출력된다.
+     */
     public void printCart() {
         for (CartItem item : items) { // 담긴 항목 수만큼 반복
             System.out.println(
