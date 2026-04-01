@@ -33,3 +33,18 @@ Java로 구현한 콘솔 기반 쇼핑 플랫폼입니다.
 ```
 Main / CommerceSystem / Category / Product
 Cart / CartItem / CartHandler / AdminHandler / Customer
+
+---
+
+## 🗂️ 클래스 구성요소
+| 클래스 | 역할 |
+|--------|------|
+| Main | 프로그램 시작점 |
+| CommerceSystem | 메인 메뉴 출력 및 흐름 관리 |
+| Category | 카테고리별 상품 목록 관리 |
+| Product | 상품 정보 (이름, 가격, 설명, 재고) |
+| Cart | 장바구니 전체 관리 |
+| CartItem | 장바구니 항목 하나 (상품 + 수량) |
+| CartHandler | 장바구니 담기/주문/취소 처리 |
+| AdminHandler | 관리자 인증 및 상품 추가/수정/삭제 |
+| Customer | 고객 정보 (이름, 이메일, 등급) |
